@@ -1,40 +1,47 @@
 export default {
-    FORUM_TOP_NEW_REQUEST: 'FORUM_TOP_NEW_REQUEST',
-    FORUM_TOP_NEW_SUCCESS: 'FORUM_TOP_NEW_SUCCESS',
-    FORUM_TOP_NEW_FAILURE: 'FORUM_TOP_NEW_FAILURE'
+    FORUM_POST_REQUEST: 'FORUM_POST_REQUEST',
+    FORUM_POST_SUCCESS: 'FORUM_POST_SUCCESS',
+    FORUM_POST_FAILURE: 'FORUM_POST_FAILURE'
 }
 
 // action
-function fetchForumTopNew(){
+import { BASE_URL } from '../constants/api';
+
+import ApiActionCreator from '../utils/ApiActionCreator';
+
+function fetchForumPost(data, onSuccess){
     const API = '';
     
     return ApiActionCreator.create( {
         endpoint: `${BASE_URL}${API}`,
         method: "GET",
-        actionType: 'FORUM_TOP_NEW',
+        data: data,
+        actionType: 'FORUM_POST',
         onSuccess: ( data ) => {
             onSuccess && onSuccess( data );
-            return fromJS(data);
+            return data;
         }
     } );
 }
 
-export function loadForumTopNew( data, onSuccess ) {
+export function loadForumPost( data, onSuccess ) {
     return dispatch => {
-        return dispatch( fetchForumTopNew() );
+        return dispatch( fetchForumPost() );
     };
 }
 
 // reducer
-const initialForumTopNewState = fromJS( {
+import { fromJS } from 'immutable';
+
+const initialForumPostState = fromJS( {
 
 } );
 
-function forumTopNew( state = initialForumTopNewState, action ) {
+export function forumPost( state = initialForumPostState, action ) {
     switch ( action.type ) {
-        case CONSTANTS.FORUM_TOP_NEW_REQUEST:
+        case CONSTANTS.FORUM_POST_REQUEST:
             return state;
-        case CONSTANTS.FORUM_TOP_NEW_SUCCESS:
+        case CONSTANTS.FORUM_POST_SUCCESS:
             return state;
         default:
             return state;

@@ -77,16 +77,21 @@ strConstant = util.format(strConstant, KAR[0], KAR[0]
 // action
 
 var strAction = "\n\n// action\n\
-function fetch"+fk+"(){\n\
+import { BASE_URL } from '../constants/api';\n\
+\n\
+import ApiActionCreator from '../utils/ApiActionCreator';\n\
+\n\
+function fetch"+fk+"(data, onSuccess){\n\
     const API = '';\n\
     \n\
     return ApiActionCreator.create( {\n\
         endpoint: `${BASE_URL}${API}`,\n\
         method: \"GET\",\n\
+        data: data,\n\
         actionType: '"+uk+"',\n\
         onSuccess: ( data ) => {\n\
             onSuccess && onSuccess( data );\n\
-            return fromJS(data);\n\
+            return data;\n\
         }\n\
     } );\n\
 }\n\
@@ -99,11 +104,13 @@ export function load"+fk+"( data, onSuccess ) {\n\
 
 // reducer
 var strReducer = "\n\n// reducer\n\
+import { fromJS } from 'immutable';\n\
+\n\
 const initial"+fk+"State = fromJS( {\n\
 \n\
 } );\n\
 \n\
-function "+keyword+"( state = initial"+fk+"State, action ) {\n\
+export function "+keyword+"( state = initial"+fk+"State, action ) {\n\
     switch ( action.type ) {\n\
         case CONSTANTS."+KAR[0]+":\n\
             return state;\n\
