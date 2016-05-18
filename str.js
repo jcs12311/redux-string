@@ -1,7 +1,10 @@
+
+
+// constant
 export default {
-    FORUM_POST_REQUEST: 'FORUM_POST_REQUEST',
-    FORUM_POST_SUCCESS: 'FORUM_POST_SUCCESS',
-    FORUM_POST_FAILURE: 'FORUM_POST_FAILURE'
+    FORUM_COMMENTS_REQUEST: 'FORUM_COMMENTS_REQUEST',
+    FORUM_COMMENTS_SUCCESS: 'FORUM_COMMENTS_SUCCESS',
+    FORUM_COMMENTS_FAILURE: 'FORUM_COMMENTS_FAILURE'
 }
 
 // action
@@ -9,14 +12,14 @@ import { BASE_URL } from '../constants/api';
 
 import ApiActionCreator from '../utils/ApiActionCreator';
 
-function fetchForumPost(data, onSuccess){
+function fetchForumComments(data, onSuccess){
     const API = '';
     
     return ApiActionCreator.create( {
         endpoint: `${BASE_URL}${API}`,
         method: "GET",
         data: data,
-        actionType: 'FORUM_POST',
+        actionType: 'FORUM_COMMENTS',
         onSuccess: ( data ) => {
             onSuccess && onSuccess( data );
             return data;
@@ -24,24 +27,24 @@ function fetchForumPost(data, onSuccess){
     } );
 }
 
-export function loadForumPost( data, onSuccess ) {
+export function loadForumComments( data, onSuccess ) {
     return dispatch => {
-        return dispatch( fetchForumPost() );
+        return dispatch( fetchForumComments(data, onSuccess) );
     };
 }
 
 // reducer
 import { fromJS } from 'immutable';
 
-const initialForumPostState = fromJS( {
+const initialForumCommentsState = fromJS( {
 
 } );
 
-export function forumPost( state = initialForumPostState, action ) {
+export default function forumComments( state = initialForumCommentsState, action ) {
     switch ( action.type ) {
-        case CONSTANTS.FORUM_POST_REQUEST:
+        case CONSTANTS.FORUM_COMMENTS_REQUEST:
             return state;
-        case CONSTANTS.FORUM_POST_SUCCESS:
+        case CONSTANTS.FORUM_COMMENTS_SUCCESS:
             return state;
         default:
             return state;

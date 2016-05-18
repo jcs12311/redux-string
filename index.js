@@ -66,7 +66,7 @@ var KAR = reqs.map(function(req){
     return decamelize(keyword+req, '_').toUpperCase();
 });
 
-var strConstant = "export default {\n\
+var strConstant = "\n\n// constant\nexport default {\n\
     %s: '%s',\n\
     %s: '%s',\n\
     %s: '%s'\n\
@@ -98,7 +98,7 @@ function fetch"+fk+"(data, onSuccess){\n\
 \n\
 export function load"+fk+"( data, onSuccess ) {\n\
     return dispatch => {\n\
-        return dispatch( fetch"+fk+"() );\n\
+        return dispatch( fetch"+fk+"(data, onSuccess) );\n\
     };\n\
 }";
 
@@ -110,7 +110,7 @@ const initial"+fk+"State = fromJS( {\n\
 \n\
 } );\n\
 \n\
-export function "+keyword+"( state = initial"+fk+"State, action ) {\n\
+export default function "+keyword+"( state = initial"+fk+"State, action ) {\n\
     switch ( action.type ) {\n\
         case CONSTANTS."+KAR[0]+":\n\
             return state;\n\
