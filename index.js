@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // // keyword: forumPost
 // // api: 'portal/apiNew/slides'
 
@@ -45,6 +47,7 @@
 //     }
 // }
 // 
+
 
 var argv = require('minimist')(process.argv.slice(2));
 var decamelize = require('decamelize');
