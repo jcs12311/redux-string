@@ -1,0 +1,6 @@
+var cat = 'foo';
+
+function fn(a, b){
+	// xxx
+	console.log(cat);
+}
