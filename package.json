@@ -1,12 +1,20 @@
 {
-  "name": "redux-string",
-  "version": "1.0.0",
-  "description": "",
+  "name": "redux-generation-string",
+  "version": "0.0.1",
+  "description": "generate some redux string that often use",
   "main": "index.js",
+  "bin": {
+    "redux-generation-string": "./index.js"
+  },
+  "repository" : {
+    "type" : "git", 
+    "url" : "https://github.com/jcs12311/redux-string.git"
+  },
+  "homepage": "https://github.com/jcs12311/redux-string",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "jcsoo",
   "license": "ISC",
   "dependencies": {
     "decamelize": "^1.2.0",
